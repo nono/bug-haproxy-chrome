@@ -47,3 +47,15 @@ Versions
 I've tried with Chrome 79 and Chromium 78. For haproxy, I've used the latest
 stable (2.1.1), and some older versions (1.9.13 in particular), compiled with
 `make -j 8 TARGET=linux-glibc USE_OPENSSL=1 USE_ZLIB=1 USE_PCRE=1`.
+
+Traces
+------
+
+* In chrome: `chrome://net-export/`
+* In haproxy: `(echo "trace h1 sink buf0; trace h1 level developer; trace h1 verbosity complete; trace h2 sink buf0; trace h2 level developer; trace h2 verbosity complete; trace h1 start now; trace h2 start now; show events buf0 -w -n" ; cat ) | socat - /tmp/sock1`
+
+Links
+-----
+
+* https://github.com/haproxy/haproxy/issues/410
+* https://bugs.chromium.org/p/chromium/issues/detail?id=1033945
